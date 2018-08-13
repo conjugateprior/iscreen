@@ -1,15 +1,3 @@
-## Positives ##
-#Goal 1: Show differentiating between noisy/influential
-#Goal 2: Show finding interactions: a) when marginal present, and b) when marginal not present
-
-## Negatives/Limitations ##
-#Goal 3: Discretization of covariates -- can we find the variables?
-  # Gaussian
-  # Bernoulli
-  # Mix
-#Goal 4: Full space of covariate interactions -- coverage probas
-
-
 # **************************************************** #
 #                  simulation setup                    #
 #                                                      #
@@ -52,8 +40,7 @@ source("functions.R")
 #                 running simulations                  #
 # **************************************************** #
 
-#for (i in 1:nrow(sim_set)) {    ## loop is over different DGP
-for (i in 115:126) {    ## loop is over different DGP
+for (i in 1:nrow(sim_set)) {    ## loop is over different DGP
   ## local DGP setup
   n_run   <- sim_set[i, 1]      ## number of observations
   k_run   <- sim_set[i, 2]      ## number of covariates
@@ -73,12 +60,7 @@ for (i in 115:126) {    ## loop is over different DGP
       split = FALSE           ## please change this argument if necessary (if you run sample splitting stuff)
     )
     set.seed(g)
-    
-    
-    ## ###################################### ##
-    ## this segment is estimator sepecific    ##
-    ## please update the following part       ##
-    ## ###################################### ##
+   
     
     ## I screen
     ## Discretize variables if necessary
@@ -109,7 +91,6 @@ for (i in 115:126) {    ## loop is over different DGP
     SIS.M           <-  colnames(dat[[1]]$Xmat)[model$ix]
     per.captureSISM <-  length(SIS.M)/length(dat[[2]]$influential_var_indiv)
     
-    ## update until this line ############### ##
     ## save relevant info here
     if(ot_run == "LN"|ot_run =="NL"){
     res[[g]]<-list("Captured.M"=M,"Marginal.I"=iscoreM,"Per.captured.M"=per.captureM,
@@ -122,21 +103,6 @@ for (i in 115:126) {    ## loop is over different DGP
     }
 
   }
-  
-  ##
-  ## post processing
-  ##
-  
-  #bias <- mean(res - theta)
-  #rmse <- sqrt(mean((res - theta)^2))
-  #variance <- var(res)
-  
-  #% captured sets
-  #returned vars/prop. of total variables
-  
-  
-  #sim_out <- c(bias, rmse, variance)
-  #names(sim_out) <- c("bias", "rmse", "variance")
   
   ##
   ## save results
@@ -154,7 +120,7 @@ for (i in 115:126) {    ## loop is over different DGP
   saveRDS(res, file = fn_name)
   cat("Simulation set",i,"of 162 complete.\n")
   
-} ## done with all simulations
+} ## end simulations
 time<-Sys.time()-t
 
 time
