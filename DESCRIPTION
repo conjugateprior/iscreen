@@ -1,0 +1,10 @@
+Package: iscreen
+Type: Package
+Title: Covariate Screening with the Influence score
+Version: 0.1.0
+Author: Adeline Lo
+Maintainer: Adeline Lo <adelinel@princeton.edu>
+Description: Conducting covariate screening with the influence (I) score.
+License: 
+Encoding: UTF-8
+LazyData: true
