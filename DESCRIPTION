@@ -4,7 +4,21 @@ Title: Covariate Screening with the Influence score
 Version: 0.1.0
 Author: Adeline Lo
 Maintainer: Adeline Lo <adelinel@princeton.edu>
-Description: Conducting covariate screening with the influence (I) score.
-License: 
+Description: This package conducts covariate screening with the influence 
+             (I) score.
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 2.14.0),
+    doParallel,
+    foreach,
+    Matrix
+Suggests: knitr,
+    rmarkdown,
+    Matrix.utils,
+    caret,
+    plyr,
+    tidyverse,
+    SIS
+VignetteBuilder: knitr
+RoxygenNote: 6.1.0
